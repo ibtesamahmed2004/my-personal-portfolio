@@ -1,0 +1,193 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+/* Premium typography */
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800&family=Merriweather:wght@400;700;900&family=Roboto:wght@300;400;500;700&display=swap");
+
+@layer base {
+  :root {
+    /* Ultra-luxury dark canvas by default */
+    --background: 225 20% 6%;
+    --foreground: 210 40% 98%;
+
+    --card: 225 18% 9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 225 18% 9%;
+    --popover-foreground: 210 40% 98%;
+
+    /* Signature gold */
+    --primary: 42 82% 55%;
+    --primary-foreground: 225 20% 8%;
+
+    --secondary: 225 14% 14%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 225 12% 16%;
+    --muted-foreground: 215 18% 70%;
+
+    --accent: 215 24% 16%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 72% 52%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 225 14% 18%;
+    --input: 225 14% 18%;
+    --ring: 42 82% 55%;
+
+    --radius: 0.5rem;
+
+    /* Extended premium tokens */
+    --hero: 225 20% 6%;
+    --hero-foreground: 210 40% 98%;
+    --gold: 42 82% 55%;
+    --gold-foreground: 225 20% 8%;
+    --ink: 210 40% 98%;
+    --ink-muted: 215 18% 70%;
+    --glass: 225 18% 10% / 0.55;
+
+    --shadow-elevated: 0 24px 60px -28px hsl(var(--gold) / 0.35);
+    --shadow-soft: 0 16px 40px -24px hsl(0 0% 0% / 0.55);
+
+    --gradient-gold: linear-gradient(135deg, hsl(var(--gold) / 0.95), hsl(45 90% 62% / 0.75), hsl(195 90% 60% / 0.55));
+    --gradient-ink: radial-gradient(1200px circle at 20% 10%, hsl(42 82% 55% / 0.10), transparent 55%),
+      radial-gradient(900px circle at 85% 20%, hsl(195 90% 60% / 0.08), transparent 50%),
+      radial-gradient(1000px circle at 40% 90%, hsl(270 85% 62% / 0.06), transparent 55%);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* Keep parity: dark is default; this is a slightly deeper variant */
+    --background: 225 24% 5%;
+    --foreground: 210 40% 98%;
+
+    --card: 225 20% 8%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 225 20% 8%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 42 82% 55%;
+    --primary-foreground: 225 20% 8%;
+
+    --secondary: 225 14% 14%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 225 12% 16%;
+    --muted-foreground: 215 18% 70%;
+
+    --accent: 215 24% 16%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 225 14% 18%;
+    --input: 225 14% 18%;
+    --ring: 42 82% 55%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    /* Prevent iOS Safari from auto-resizing text after orientation changes */
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    scroll-behavior: smooth;
+    /* Reduce odd horizontal jiggle on some mobile browsers */
+    overflow-x: hidden;
+  }
+}
+
+@layer utilities {
+  .lux-font-serif {
+    font-family: "Playfair Display", "Merriweather", Georgia, serif;
+  }
+  .lux-font-sans {
+    font-family: Roboto, system-ui, -apple-system, Segoe UI, Arial, sans-serif;
+  }
+
+  .lux-gradient-ink {
+    background-image: var(--gradient-ink);
+  }
+
+  .lux-text-gold {
+    background-image: var(--gradient-gold);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .lux-glass {
+    background-color: hsl(var(--glass));
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid hsl(var(--border) / 0.6);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .lux-section-frame {
+    box-shadow: var(--shadow-elevated);
+  }
+
+  .lux-noise {
+    position: relative;
+  }
+  .lux-noise::after {
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    opacity: 0.16;
+    mix-blend-mode: overlay;
+    background-image:
+      radial-gradient(circle at 10% 10%, hsl(var(--gold) / 0.08), transparent 40%),
+      radial-gradient(circle at 85% 20%, hsl(195 90% 60% / 0.05), transparent 45%),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.25'/%3E%3C/svg%3E");
+    background-size: cover, cover, 220px 220px;
+  }
+
+  .lux-video-overlay {
+    background:
+      radial-gradient(900px circle at 20% 10%, hsl(var(--gold) / 0.24), transparent 55%),
+      radial-gradient(700px circle at 80% 30%, hsl(195 90% 60% / 0.20), transparent 55%),
+      linear-gradient(180deg, hsl(var(--background) / 0.82), hsl(var(--background) / 1));
+  }
+}
